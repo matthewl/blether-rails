@@ -1,24 +1,16 @@
-# README
+# Blether API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Blether is an API endpoint written in Rails for a fictitious micro-blogging platform. Its sole purpose is to be used to explore the API only option for the Ruby on Rails framework.
 
-Things you may want to cover:
+Blether exposes the following RESTful endpoints:
 
-* Ruby version
+* `POST /accounts` - Creates a new account.
+* `POST /auth/login` - Logs an account in.
+* `POST /auth/logout` - Logs the current account out.
+* `POST /posts` - Creates a new post.
+* `GET /posts/:id` - Gets a post.
+* `PUT /posts/:id` - Updates a post.
+* `DESTROY /posts/:id` - Deletes a post.
+* `POST /posts/reply` - Reply to a post.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+More endpoints may follow.
