@@ -73,6 +73,7 @@ RSpec.configure do |config|
 
   # Add controller spec helper
   config.include ControllerSpecHelper
+  config.include RequestSpecHelper
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
