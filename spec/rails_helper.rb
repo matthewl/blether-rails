@@ -7,6 +7,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 require 'database_cleaner'
 
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 Shoulda::Matchers.configure do |config|
   config.integrate do  |with|
     with.test_framework :rspec
@@ -68,6 +70,9 @@ RSpec.configure do |config|
 
   # Add factory_bot methods
   config.include FactoryBot::Syntax::Methods
+
+  # Add controller spec helper
+  config.include ControllerSpecHelper
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
