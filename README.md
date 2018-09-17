@@ -1,7 +1,8 @@
 # Blether API
 
 > verb (chiefly Scottish)
-> talk in a long-winded way without making very much sense: there's plenty of stuff I could blether about from today.
+> 
+> talk in a long-winded way without making very much sense: _there's plenty of stuff I could blether about from today._
 
 Blether is an API endpoint written in Rails for a fictitious micro-blogging platform. Its sole purpose is to be used to explore the API only option for the Ruby on Rails framework.
 
@@ -17,5 +18,7 @@ Blether exposes the following RESTful endpoints:
 * `PUT /posts/:id` - Updates a post (done ✅).
 * `DESTROY /posts/:id` - Deletes a post (done ✅).
 * `POST /posts/reply` - Reply to a post.
+* `POST /accounts/follow` - Follow account with username parameter.
+* `POST /accounts/unfollow` - Unfollow account with username parameter.
 
 More endpoints may follow.
