@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AccountsController, type: :controller do
+RSpec.describe 'Sign up API', type: :request do
   # Our test account
   let(:account) { build(:account) }
 
@@ -9,16 +9,13 @@ RSpec.describe AccountsController, type: :controller do
 
   # Valid signup attributes
   let(:valid_attributes) do
-    attributes_for(:account, password_confirmation: account.password)
+    attributes_for(:account, password_confirmation: account.password).to_json
   end
 
   # User signup test suite
   describe 'POST /signup' do
     context 'when valid request' do
-      before do
-        @request.headers.merge(headers)
-        post :create, params: valid_attributes
-      end
+      before { post '/signup', params: valid_attributes, headers: headers }
 
       it 'creates a new account' do
         expect(response).to have_http_status(201)
@@ -34,10 +31,7 @@ RSpec.describe AccountsController, type: :controller do
     end
 
     context 'when invalid request' do
-      before do
-        @request.headers.merge(headers)
-        post :create, params: {}
-      end
+      before { post '/signup', params: {}, headers: headers }
 
       it 'does not create a new account' do
         expect(response).to have_http_status(422)
