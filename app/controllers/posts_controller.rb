@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = current_account.posts
+    following_ids = current_account.following.collect(&:account_id)
+    @posts = Post.where(account_id: following_ids).order('created_at DESC')
     json_response(@posts)
   end
 

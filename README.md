@@ -11,7 +11,7 @@ Blether exposes the following RESTful endpoints:
 * `POST /accounts` - Creates a new account (done ✅).
 * `POST /auth/login` - Logs an account in (done ✅).
 * `POST /auth/logout` - Logs the current account out (Need to look into this - case of clearing client session? 👀).
-* `GET /posts` - Gets the current account's timeline.
+* `GET /posts` - Gets the current account's timeline (done ✅).
 * `GET /posts/:id` - Gets a post (done ✅).
 * `POST /posts` - Creates a new post (done ✅).
 * `PUT /posts/:id` - Updates a post (done ✅).
