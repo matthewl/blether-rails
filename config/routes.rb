@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post 'signup', to: 'accounts#create'
 
   resources :posts
+  resources :friends, only: [:create, :destroy]
 end

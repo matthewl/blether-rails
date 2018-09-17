@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_17_072159) do
+ActiveRecord::Schema.define(version: 2018_09_17_114002) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "username"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2018_09_17_072159) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "followers", force: :cascade do |t|
+    t.integer "account_id"
+    t.integer "follower_id"
+    t.index ["account_id"], name: "index_followers_on_account_id"
+    t.index ["follower_id"], name: "index_followers_on_follower_id"
   end
 
   create_table "posts", force: :cascade do |t|
