@@ -22,3 +22,11 @@ Blether exposes the following RESTful endpoints:
 * `GET /user/posts/:username/` - Gets the accounts's recent posts (done ✅).
 
 More endpoints may follow.
+
+I'm also considering working on a few other features for this API.
+
+* Better authorisation for endpoints.
+* Versioning of the API.
+* Pagination of posts.
+* Favourites/bookmarking of posts.
+* A search endpoint.
