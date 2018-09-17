@@ -4,7 +4,7 @@
 > 
 > talk in a long-winded way without making very much sense: _there's plenty of stuff I could blether about from today._
 
-Blether is an API endpoint written in Rails for a fictitious micro-blogging platform. Its sole purpose is to be used to explore the API only option for the Ruby on Rails framework.
+Blether is an API written in Rails for a fictitious micro-blogging platform. Its sole purpose is to be used to explore the API only option for the Ruby on Rails framework.
 
 Blether exposes the following RESTful endpoints:
 

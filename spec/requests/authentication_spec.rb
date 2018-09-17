@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AuthenticationController, type: :controller do
+RSpec.describe 'Authentication API', type: :request do
   describe 'POST /auth/login' do
     # Our test account
     let!(:account) { create(:account) }
@@ -13,7 +13,7 @@ RSpec.describe AuthenticationController, type: :controller do
       {
         email: account.email,
         password: account.password
-      }
+      }.to_json
     end
 
     # Invalid authentication credentials
@@ -21,14 +21,11 @@ RSpec.describe AuthenticationController, type: :controller do
       {
         email: Faker::Internet.email,
         password: Faker::Internet.password
-      }
+      }.to_json
     end
 
     context 'when request is valid' do
-      before do
-        @request.headers.merge(headers)
-        post :authenticate, params: valid_credentials
-      end
+      before { post '/auth/login', params: valid_credentials, headers: headers }
 
       it 'returns an authentication token' do
         expect(json['auth_token']).not_to be_nil
@@ -36,10 +33,7 @@ RSpec.describe AuthenticationController, type: :controller do
     end
 
     context 'when request is invalid' do
-      before do
-        @request.headers.merge(headers)
-        post :authenticate, params: invalid_credentials
-      end
+      before { post '/auth/login', params: invalid_credentials, headers: headers }
 
       it 'returns a failure message' do
         expect(json['message']).to match(/Invalid credentials/)
