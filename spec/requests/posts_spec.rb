@@ -48,4 +48,57 @@ RSpec.describe 'Posts API', type: :request do
       end
     end
   end
+
+  describe 'POST /posts' do
+    # A valid post to create
+    let!(:account) { create(:account) }
+    let(:valid_attributes) { { title: 'Side-project update', body: "I'm going to make the next Twitter." }.to_json }
+    let(:invalid_attributes) { { body: '' }.to_json }
+
+    context 'when the request is valid' do
+      before { post '/posts', params: valid_attributes, headers: headers }
+
+      it 'creates a post with a title' do
+        expect(json['title']).to eq('Side-project update')
+      end
+
+      it 'creates a post with a body' do
+        expect(json['body']).to eq("I'm going to make the next Twitter.")
+      end
+
+      it 'returns the status code of 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
+    context 'when the request is invalid' do
+      before { post '/posts', params: invalid_attributes, headers: headers }
+
+      it 'returns the status code of 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a validation failure message' do
+        expect(response.body).to match(/Validation failed: Body can't be blank/)
+      end
+    end
+  end
+
+  describe 'PUT /posts/:id' do
+    let!(:account) { create(:account) }
+    let(:valid_attributes) { { title: 'Side-project update', body: "I'm going to make the next Twitter and be a billionaire." }.to_json }
+
+    context 'when the record exists' do
+      before { put "/posts/#{post_id}", params: valid_attributes, headers: headers }
+
+      it 'updates the record' do
+        expect(response.body).to be_empty
+      end
+
+      it 'returns the status code of 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
+
 end
