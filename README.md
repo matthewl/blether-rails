@@ -17,8 +17,8 @@ Blether exposes the following RESTful endpoints:
 * `POST /posts` - Creates a new post (done ✅).
 * `PUT /posts/:id` - Updates a post (done ✅).
 * `DESTROY /posts/:id` - Deletes a post (done ✅).
-* `POST /posts/reply` - Reply to a post.
-* `POST /friends` - Follow account with username parameter (done ✅).
+* `POST /posts/reply` - Reply to a post (done ✅).
+* `POST /friends` - Follow account with username parameter (done ✅)
 * `DESTROY /friends/:id` - Unfollow account (done ✅).
 
 More endpoints may follow.
