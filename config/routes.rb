@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   resources :friends, only: %i[create destroy]
   resources :posts
+  get 'user/posts/:username', to: 'user_posts#index'
+
   resources :replies, only: :create
 end
